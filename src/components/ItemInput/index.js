@@ -16,7 +16,7 @@ const ItemInput = ({ onChange, value }) => {
   )
 }
 
-SearchInput.propTypes = {
+ItemInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string
 }
