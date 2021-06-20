@@ -14,6 +14,15 @@ function App() {
     { name: 'Semangka', count: 1 }
   ]);
 
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const newItems = [...items, { name: value, count: 1 }];
+
+    setItems(newItems);
+    setValue('');
+  }
+
   const addItemHandler = (index) => {
     const newItems = [...items];
 
@@ -36,6 +45,7 @@ function App() {
       <Container>
         <ItemInput
           onChange={e => setValue(e.target.value)}
+          onSubmit={formSubmitHandler}
           value={value}
         />
 
