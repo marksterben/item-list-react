@@ -6,7 +6,7 @@ import styles from './Items.module.css'
 import plusIcon from '../../assets/plus-icon.svg'
 import minusIcon from '../../assets/minus-icon.svg'
 
-const Items = ({ items, addItemHandler }) => {
+const Items = ({ items, addItemHandler, subtractItemHandler }) => {
   return (
     <div className={styles.items}>
       {items.map((item, index, arr) =>
@@ -21,13 +21,13 @@ const Items = ({ items, addItemHandler }) => {
           <div className={styles.itemIconWrapper}>
             <div className={styles.itemCount}>{item.count}</div>
 
-            <button className={styles.itemActionButton}>
+            <button onClick={() => subtractItemHandler(index)} className={styles.itemActionButton}>
               <img src={minusIcon} alt="minus icon" />
             </button>
+
             <button onClick={() => addItemHandler(index)} className={styles.itemActionButton}>
               <img src={plusIcon} alt="plus icon" />
             </button>
-
           </div>
         </div>
       )}
@@ -40,7 +40,8 @@ Items.propTypes = {
     name: PropTypes.string,
     count: PropTypes.number
   })),
-  addItemHandler: PropTypes.func
+  addItemHandler: PropTypes.func,
+  subtractItemHandler: PropTypes.func
 }
 
 export default Items

@@ -22,6 +22,14 @@ function App() {
     setItems(newItems);
   }
 
+  const subtractItemHandler = (index) => {
+    const newItems = [...items];
+
+    newItems[index].count = newItems[index].count - 1;
+
+    setItems(newItems);
+  }
+
   return (
     <>
       <Navbar />
@@ -37,6 +45,7 @@ function App() {
             ? <Items
               items={items}
               addItemHandler={addItemHandler}
+              subtractItemHandler={subtractItemHandler}
             />
             : <Empty />
         }
