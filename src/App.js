@@ -39,6 +39,14 @@ function App() {
     setItems(newItems);
   }
 
+  const deleteItemHandler = (index) => {
+    const newItems = [...items];
+
+    newItems.splice(index, 1)
+
+    setItems(newItems);
+  }
+
   return (
     <>
       <Navbar />
@@ -56,6 +64,7 @@ function App() {
               items={items}
               addItemHandler={addItemHandler}
               subtractItemHandler={subtractItemHandler}
+              deleteItemHandler={deleteItemHandler}
             />
             : <Empty />
         }
