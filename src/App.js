@@ -5,14 +5,11 @@ import Container from './components/Container';
 import ItemInput from './components/ItemInput';
 import Items from './components/Items';
 import Empty from './components/Empty';
+import Info from './components/Info';
 
 function App() {
   const [value, setValue] = useState('');
-  const [items, setItems] = useState([
-    { name: 'Susu ultra', count: 1 },
-    { name: 'Tahu sumedang', count: 1 },
-    { name: 'Semangka', count: 1 }
-  ]);
+  const [items, setItems] = useState([]);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -42,10 +39,12 @@ function App() {
   const deleteItemHandler = (index) => {
     const newItems = [...items];
 
-    newItems.splice(index, 1)
+    newItems.splice(index, 1);
 
     setItems(newItems);
   }
+
+  const totalCounts = items.reduce((total, num) => total + num.count, 0);
 
   return (
     <>
@@ -57,6 +56,11 @@ function App() {
           value={value}
         />
 
+        <Info
+          itemsLength={items.length}
+          totalCounts={totalCounts}
+          deleteAllHandler={() => setItems([])}
+        />
 
         {
           items.length > 0
