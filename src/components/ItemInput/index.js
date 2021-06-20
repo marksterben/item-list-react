@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import styles from './ItemInput.module.css'
 
-const SearchInput = ({ onChange, value }) => {
+const ItemInput = ({ onChange, value }) => {
   return (
     <form className={styles.form}>
       <input
@@ -21,4 +21,4 @@ SearchInput.propTypes = {
   value: PropTypes.string
 }
 
-export default SearchInput
+export default ItemInput
