@@ -12,7 +12,15 @@ function App() {
     { name: 'Susu ultra', count: 1 },
     { name: 'Tahu sumedang', count: 1 },
     { name: 'Semangka', count: 1 }
-  ])
+  ]);
+
+  const addItemHandler = (index) => {
+    const newItems = [...items];
+
+    newItems[index].count = newItems[index].count + 1;
+
+    setItems(newItems);
+  }
 
   return (
     <>
@@ -26,7 +34,10 @@ function App() {
 
         {
           items.length > 0
-            ? <Items items={items} />
+            ? <Items
+              items={items}
+              addItemHandler={addItemHandler}
+            />
             : <Empty />
         }
       </Container>
