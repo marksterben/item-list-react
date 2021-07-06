@@ -81,7 +81,13 @@ const Items = ({ items }) => {
 };
 
 Items.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Items;

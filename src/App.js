@@ -10,7 +10,7 @@ import Info from "./components/Info";
 import { getItems } from "./rest";
 
 const App = () => {
-  const { isLoading, isError, data } = useQuery("", getItems);
+  const { isLoading, isError, data } = useQuery("items", getItems);
 
   if (isLoading) {
     return (

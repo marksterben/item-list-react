@@ -12,6 +12,7 @@ const Info = ({ itemsLength, totalCounts }) => {
       queryClient.invalidateQueries("items");
     },
   });
+
   return (
     <div className={styles.info}>
       <div className={styles.infoTotal}>
@@ -30,8 +31,8 @@ const Info = ({ itemsLength, totalCounts }) => {
 };
 
 Info.propTypes = {
-  itemsLength: PropTypes.number,
-  totalCounts: PropTypes.number,
+  itemsLength: PropTypes.number.isRequired,
+  totalCounts: PropTypes.number.isRequired,
 };
 
 export default Info;

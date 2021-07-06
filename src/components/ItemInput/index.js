@@ -7,7 +7,6 @@ import { addItem } from "../../rest";
 
 const ItemInput = () => {
   const [value, setValue] = useState("");
-
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation(addItem, {
