@@ -23,11 +23,14 @@ export const addItem = async (data) => {
   }
 };
 
-export const updateItem = async (id, data) => {
+export const updateItem = async ({ id, name, count }) => {
   try {
     await axios.put(
       `https://marksterben-item-list-api.herokuapp.com/api/item/${id}`,
-      data
+      {
+        name: name,
+        count: count,
+      }
     );
   } catch (error) {
     console.error(error);
