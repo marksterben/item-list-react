@@ -1,11 +1,7 @@
-import styles from './Empty.module.css'
+import styles from "./Empty.module.css";
 
-const Empty = () => {
-  return (
-    <div className={styles.empty}>
-      Empty List ...
-    </div>
-  )
-}
+const Empty = ({ text }) => {
+  return <div className={styles.empty}>{text}</div>;
+};
 
-export default Empty
+export default Empty;
