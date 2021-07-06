@@ -1,8 +1,17 @@
-import PropTypes from 'prop-types'
+import { useMutation, useQueryClient } from "react-query";
+import PropTypes from "prop-types";
 
-import styles from './Info.module.css'
+import styles from "./Info.module.css";
+import { deleteAllItem } from "../../rest";
 
-const Info = ({ itemsLength, totalCounts, deleteAllHandler }) => {
+const Info = ({ itemsLength, totalCounts }) => {
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation(deleteAllItem, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("items");
+    },
+  });
   return (
     <div className={styles.info}>
       <div className={styles.infoTotal}>
@@ -13,17 +22,16 @@ const Info = ({ itemsLength, totalCounts, deleteAllHandler }) => {
         <p>{`Total Counts: ${totalCounts}`}</p>
       </div>
 
-      <button onClick={deleteAllHandler} className={styles.deleteAllButton}>
+      <button onClick={() => mutate()} className={styles.deleteAllButton}>
         Delete All List
       </button>
     </div>
-  )
-}
+  );
+};
 
 Info.propTypes = {
   itemsLength: PropTypes.number,
   totalCounts: PropTypes.number,
-  deleteAllHandler: PropTypes.func
-}
+};
 
-export default Info
+export default Info;
