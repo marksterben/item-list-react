@@ -46,3 +46,13 @@ export const deleteItem = async (id) => {
     console.error(error);
   }
 };
+
+export const deleteAllItem = async () => {
+  try {
+    await axios.delete(
+      `https://marksterben-item-list-api.herokuapp.com/api/items`
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
